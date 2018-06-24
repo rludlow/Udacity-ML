@@ -1,4 +1,4 @@
-# Udacity-ML-projects
+# Udacity Machine Learning Nanodegree Projects
 
 1. Foundations and Regression - [Boston Housing](https://github.com/rludlow/Udacity-ML/tree/master/Boston-Housing)
 2. Supervised Learning - [Finding Donors for Charity](https://github.com/rludlow/Udacity-ML/tree/master/Finding-Donors)
