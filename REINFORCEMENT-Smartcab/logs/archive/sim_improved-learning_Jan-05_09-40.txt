@@ -1,0 +1,166 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: forward')
+ -- None : 0.27
+ -- forward : -0.75
+ -- right : 0.01
+ -- left : 0.00
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: left')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.21
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: left', 'oncoming_car: forward')
+ -- None : 0.00
+ -- forward : -0.71
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: right', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.03
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: right')
+ -- None : 0.00
+ -- forward : -2.76
+ -- right : 0.08
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: forward')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.04
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: forward')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : -1.46
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: right')
+ -- None : 0.00
+ -- forward : 0.01
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: None')
+ -- None : 0.09
+ -- forward : -1.99
+ -- right : 0.12
+ -- left : 0.00
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: right')
+ -- None : 0.00
+ -- forward : 0.12
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: right', 'oncoming_car: None')
+ -- None : -0.34
+ -- forward : 0.13
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: forward')
+ -- None : 0.17
+ -- forward : -0.66
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : -2.78
+ -- right : -1.41
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: left', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : -0.64
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: forward', 'oncoming_car: left')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -2.79
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: right')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.11
+ -- left : 0.00
+
+('WP: right', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : 0.05
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: forward')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -0.71
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : -0.67
+ -- right : 0.09
+ -- left : -0.64
+
+('WP: right', 'light: red', 'left_car: forward', 'oncoming_car: forward')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -2.81
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: None')
+ -- None : -0.34
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: left')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.09
+ -- left : -1.28
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: left')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.10
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: left')
+ -- None : 0.00
+ -- forward : 0.06
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : -0.02
+ -- left : 0.21
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- None : 0.00
+ -- forward : 0.00
+ -- right : 0.11
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: left', 'oncoming_car: None')
+ -- None : -0.29
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+

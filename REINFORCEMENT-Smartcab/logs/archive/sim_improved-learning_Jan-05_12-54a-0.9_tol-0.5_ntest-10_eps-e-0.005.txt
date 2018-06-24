@@ -1,0 +1,574 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+('WP: left', 'light: red', 'left_car: left', 'oncoming_car: forward')
+ -- forward : -10.11
+ -- None : 0.00
+ -- right : 0.09
+ -- left : -10.34
+
+('WP: forward', 'light: green', 'left_car: forward', 'oncoming_car: None')
+ -- forward : 2.70
+ -- None : -5.37
+ -- right : 1.10
+ -- left : 0.50
+
+('WP: forward', 'light: green', 'left_car: left', 'oncoming_car: left')
+ -- forward : 0.00
+ -- None : -4.74
+ -- right : 0.00
+ -- left : 1.40
+
+('WP: left', 'light: green', 'left_car: right', 'oncoming_car: left')
+ -- forward : 0.65
+ -- None : 0.00
+ -- right : 0.15
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: left', 'oncoming_car: right')
+ -- forward : -10.27
+ -- None : 1.18
+ -- right : -0.42
+ -- left : -35.26
+
+('WP: right', 'light: red', 'left_car: left', 'oncoming_car: forward')
+ -- forward : -10.24
+ -- None : 0.27
+ -- right : 2.36
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: left', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : -4.89
+ -- right : 0.00
+ -- left : -18.04
+
+('WP: right', 'light: green', 'left_car: right', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 0.00
+ -- right : 2.12
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: right')
+ -- forward : 0.68
+ -- None : -3.96
+ -- right : 0.07
+ -- left : -20.19
+
+('WP: right', 'light: red', 'left_car: right', 'oncoming_car: left')
+ -- forward : -9.16
+ -- None : -0.09
+ -- right : 2.17
+ -- left : -9.38
+
+('WP: left', 'light: green', 'left_car: left', 'oncoming_car: forward')
+ -- forward : -0.15
+ -- None : -5.09
+ -- right : 0.03
+ -- left : -19.55
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: forward')
+ -- forward : -10.40
+ -- None : 2.42
+ -- right : 1.46
+ -- left : -9.63
+
+('WP: forward', 'light: red', 'left_car: left', 'oncoming_car: None')
+ -- forward : -9.72
+ -- None : 1.16
+ -- right : 0.79
+ -- left : -10.09
+
+('WP: forward', 'light: red', 'left_car: forward', 'oncoming_car: left')
+ -- forward : -35.75
+ -- None : 2.35
+ -- right : -17.99
+ -- left : 0.00
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: right')
+ -- forward : -9.95
+ -- None : 1.36
+ -- right : 2.69
+ -- left : -40.66
+
+('WP: left', 'light: green', 'left_car: forward', 'oncoming_car: left')
+ -- forward : -0.02
+ -- None : -4.82
+ -- right : -0.24
+ -- left : 0.00
+
+('WP: right', 'light: green', 'left_car: None', 'oncoming_car: right')
+ -- forward : 0.78
+ -- None : 0.00
+ -- right : 1.25
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: left', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 0.00
+ -- right : 1.11
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : 2.69
+ -- right : -18.73
+ -- left : -38.91
+
+('WP: forward', 'light: red', 'left_car: forward', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 1.27
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: right', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : -5.30
+ -- right : 0.12
+ -- left : 0.00
+
+('WP: right', 'light: green', 'left_car: left', 'oncoming_car: left')
+ -- forward : 0.41
+ -- None : -4.07
+ -- right : 1.72
+ -- left : -0.45
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: left')
+ -- forward : -37.73
+ -- None : 0.30
+ -- right : 0.26
+ -- left : -10.20
+
+('WP: right', 'light: red', 'left_car: forward', 'oncoming_car: left')
+ -- forward : -38.96
+ -- None : 0.29
+ -- right : -17.50
+ -- left : -35.31
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : 0.08
+ -- None : -5.07
+ -- right : 0.00
+ -- left : -20.47
+
+('WP: right', 'light: green', 'left_car: left', 'oncoming_car: forward')
+ -- forward : -0.09
+ -- None : -5.34
+ -- right : 2.44
+ -- left : -17.94
+
+('WP: left', 'light: red', 'left_car: right', 'oncoming_car: left')
+ -- forward : -8.11
+ -- None : 1.95
+ -- right : 0.25
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : 1.44
+ -- None : -4.84
+ -- right : 0.00
+ -- left : 0.00
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: left')
+ -- forward : 0.59
+ -- None : -4.63
+ -- right : 1.10
+ -- left : 1.10
+
+('WP: left', 'light: red', 'left_car: right', 'oncoming_car: forward')
+ -- forward : -9.19
+ -- None : 1.39
+ -- right : 0.44
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 0.92
+ -- right : 0.63
+ -- left : -39.58
+
+('WP: forward', 'light: red', 'left_car: forward', 'oncoming_car: None')
+ -- forward : -40.06
+ -- None : 1.06
+ -- right : 0.00
+ -- left : -39.54
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: None')
+ -- forward : -36.84
+ -- None : 1.83
+ -- right : 0.33
+ -- left : -9.63
+
+('WP: left', 'light: green', 'left_car: right', 'oncoming_car: forward')
+ -- forward : 0.07
+ -- None : -4.05
+ -- right : 0.65
+ -- left : -18.53
+
+('WP: right', 'light: red', 'left_car: left', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -36.13
+
+('WP: right', 'light: red', 'left_car: forward', 'oncoming_car: None')
+ -- forward : -40.61
+ -- None : 0.54
+ -- right : -20.03
+ -- left : -39.59
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- forward : 2.76
+ -- None : -4.13
+ -- right : 0.26
+ -- left : 1.05
+
+('WP: left', 'light: red', 'left_car: left', 'oncoming_car: None')
+ -- forward : -10.34
+ -- None : 0.90
+ -- right : 0.36
+ -- left : -10.80
+
+('WP: right', 'light: red', 'left_car: right', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : 0.69
+ -- right : 1.02
+ -- left : -8.34
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : 1.32
+ -- right : -0.47
+ -- left : -9.44
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: None')
+ -- forward : -10.03
+ -- None : 0.59
+ -- right : 1.99
+ -- left : -9.76
+
+('WP: forward', 'light: red', 'left_car: left', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 1.59
+ -- right : 0.27
+ -- left : -40.25
+
+('WP: right', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- forward : 1.19
+ -- None : -4.25
+ -- right : 2.10
+ -- left : 1.64
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: right')
+ -- forward : -9.07
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -36.22
+
+('WP: left', 'light: green', 'left_car: forward', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : -4.67
+ -- right : 0.88
+ -- left : -19.33
+
+('WP: right', 'light: green', 'left_car: left', 'oncoming_car: None')
+ -- forward : 0.51
+ -- None : -5.72
+ -- right : 2.27
+ -- left : 1.21
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: None')
+ -- forward : 1.06
+ -- None : -4.82
+ -- right : 0.49
+ -- left : 1.17
+
+('WP: right', 'light: green', 'left_car: left', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : -3.66
+ -- right : 1.87
+ -- left : -19.74
+
+('WP: right', 'light: green', 'left_car: right', 'oncoming_car: None')
+ -- forward : 0.67
+ -- None : -3.97
+ -- right : 0.87
+ -- left : 0.85
+
+('WP: forward', 'light: green', 'left_car: left', 'oncoming_car: None')
+ -- forward : 2.36
+ -- None : -4.26
+ -- right : 0.28
+ -- left : 0.57
+
+('WP: right', 'light: red', 'left_car: forward', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -39.64
+
+('WP: forward', 'light: green', 'left_car: right', 'oncoming_car: forward')
+ -- forward : 1.52
+ -- None : -4.91
+ -- right : 0.70
+ -- left : -20.53
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: forward')
+ -- forward : -12.57
+ -- None : 1.85
+ -- right : -0.14
+ -- left : -10.90
+
+('WP: forward', 'light: green', 'left_car: forward', 'oncoming_car: right')
+ -- forward : 1.45
+ -- None : 0.00
+ -- right : 1.30
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: left')
+ -- forward : 1.21
+ -- None : -5.04
+ -- right : 0.65
+ -- left : 0.32
+
+('WP: forward', 'light: green', 'left_car: right', 'oncoming_car: left')
+ -- forward : 0.00
+ -- None : -3.61
+ -- right : 0.00
+ -- left : 0.68
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: right')
+ -- forward : -35.38
+ -- None : 1.86
+ -- right : -18.61
+ -- left : -36.25
+
+('WP: right', 'light: green', 'left_car: None', 'oncoming_car: forward')
+ -- forward : 0.57
+ -- None : -4.94
+ -- right : 1.74
+ -- left : -20.16
+
+('WP: left', 'light: green', 'left_car: right', 'oncoming_car: None')
+ -- forward : 0.91
+ -- None : -5.56
+ -- right : 0.74
+ -- left : 1.30
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: forward')
+ -- forward : 1.84
+ -- None : -5.76
+ -- right : 1.59
+ -- left : -20.49
+
+('WP: left', 'light: red', 'left_car: None', 'oncoming_car: left')
+ -- forward : -9.41
+ -- None : 1.56
+ -- right : 0.09
+ -- left : -10.42
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: right')
+ -- forward : 0.90
+ -- None : 0.00
+ -- right : 1.18
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: forward', 'oncoming_car: None')
+ -- forward : 1.24
+ -- None : -4.23
+ -- right : 1.48
+ -- left : 1.29
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: None')
+ -- forward : -9.90
+ -- None : 1.55
+ -- right : 0.02
+ -- left : -9.44
+
+('WP: left', 'light: red', 'left_car: right', 'oncoming_car: right')
+ -- forward : -9.47
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -38.94
+
+('WP: right', 'light: green', 'left_car: right', 'oncoming_car: left')
+ -- forward : 1.05
+ -- None : -5.40
+ -- right : 1.21
+ -- left : 1.45
+
+('WP: right', 'light: green', 'left_car: forward', 'oncoming_car: None')
+ -- forward : 1.16
+ -- None : -5.20
+ -- right : 2.57
+ -- left : 0.92
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: forward')
+ -- forward : 1.89
+ -- None : -4.87
+ -- right : 0.32
+ -- left : -19.23
+
+('WP: right', 'light: green', 'left_car: right', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : -5.31
+ -- right : 2.44
+ -- left : 0.00
+
+('WP: right', 'light: red', 'left_car: left', 'oncoming_car: None')
+ -- forward : -36.17
+ -- None : 0.36
+ -- right : 2.03
+ -- left : -12.63
+
+('WP: forward', 'light: green', 'left_car: left', 'oncoming_car: forward')
+ -- forward : 2.33
+ -- None : 0.00
+ -- right : 1.26
+ -- left : 0.00
+
+('WP: forward', 'light: red', 'left_car: right', 'oncoming_car: left')
+ -- forward : -9.22
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -8.79
+
+('WP: left', 'light: green', 'left_car: None', 'oncoming_car: left')
+ -- forward : 0.20
+ -- None : -5.65
+ -- right : 0.25
+ -- left : 0.66
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: None')
+ -- forward : -37.64
+ -- None : 0.45
+ -- right : 0.51
+ -- left : -9.91
+
+('WP: right', 'light: red', 'left_car: left', 'oncoming_car: left')
+ -- forward : -9.86
+ -- None : 1.18
+ -- right : 0.96
+ -- left : -9.90
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : 2.00
+ -- right : -20.46
+ -- left : -36.69
+
+('WP: right', 'light: red', 'left_car: right', 'oncoming_car: None')
+ -- forward : -8.25
+ -- None : -0.24
+ -- right : 1.15
+ -- left : -36.34
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: forward')
+ -- forward : -9.52
+ -- None : 0.29
+ -- right : 2.57
+ -- left : -10.76
+
+('WP: right', 'light: red', 'left_car: None', 'oncoming_car: left')
+ -- forward : -9.85
+ -- None : 1.16
+ -- right : 2.16
+ -- left : -9.30
+
+('WP: forward', 'light: red', 'left_car: left', 'oncoming_car: forward')
+ -- forward : -10.28
+ -- None : 2.84
+ -- right : 0.01
+ -- left : -8.75
+
+('WP: left', 'light: green', 'left_car: left', 'oncoming_car: left')
+ -- forward : 0.33
+ -- None : -4.40
+ -- right : -0.43
+ -- left : 0.00
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: None')
+ -- forward : -40.05
+ -- None : 1.41
+ -- right : -19.76
+ -- left : -39.28
+
+('WP: forward', 'light: red', 'left_car: None', 'oncoming_car: right')
+ -- forward : 0.00
+ -- None : 1.04
+ -- right : 0.00
+ -- left : -40.34
+
+('WP: forward', 'light: red', 'left_car: left', 'oncoming_car: left')
+ -- forward : -9.78
+ -- None : 2.23
+ -- right : 1.64
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: None', 'oncoming_car: right')
+ -- forward : 1.12
+ -- None : -4.60
+ -- right : 1.87
+ -- left : -19.85
+
+('WP: left', 'light: red', 'left_car: left', 'oncoming_car: left')
+ -- forward : -9.03
+ -- None : 1.71
+ -- right : 0.19
+ -- left : 0.00
+
+('WP: left', 'light: green', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : 0.00
+ -- None : -4.84
+ -- right : 0.82
+ -- left : 0.00
+
+('WP: forward', 'light: green', 'left_car: right', 'oncoming_car: None')
+ -- forward : 1.59
+ -- None : -5.31
+ -- right : 0.11
+ -- left : 1.02
+
+('WP: right', 'light: green', 'left_car: None', 'oncoming_car: left')
+ -- forward : 1.27
+ -- None : -5.32
+ -- right : 0.85
+ -- left : 0.98
+
+('WP: left', 'light: green', 'left_car: left', 'oncoming_car: None')
+ -- forward : 0.17
+ -- None : -4.72
+ -- right : -0.44
+ -- left : 2.18
+
+('WP: right', 'light: red', 'left_car: forward', 'oncoming_car: forward')
+ -- forward : -36.63
+ -- None : 0.17
+ -- right : 0.00
+ -- left : -39.68
+
+('WP: left', 'light: red', 'left_car: forward', 'oncoming_car: left')
+ -- forward : -35.46
+ -- None : 1.66
+ -- right : -17.27
+ -- left : -39.97
+
+('WP: left', 'light: red', 'left_car: right', 'oncoming_car: None')
+ -- forward : -10.71
+ -- None : 1.42
+ -- right : 0.11
+ -- left : -9.89
+
+('WP: forward', 'light: green', 'left_car: forward', 'oncoming_car: left')
+ -- forward : 2.00
+ -- None : -4.14
+ -- right : 0.37
+ -- left : 0.65
+
+('WP: left', 'light: green', 'left_car: right', 'oncoming_car: right')
+ -- forward : 1.36
+ -- None : 0.00
+ -- right : 0.00
+ -- left : -19.08
+
