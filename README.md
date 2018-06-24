@@ -6,4 +6,4 @@
 4. Reinforcement Learning - [Smartcab](https://github.com/rludlow/Udacity-ML/tree/master/Smartcab)
 5. Deep Learning - [CNN Dog Breed Identifier](https://github.com/rludlow/Udacity-ML/tree/master/Dog-Breeds)
 
-My capstone project is a available here: [3D Human Pose Estimation from 2d Keypoints](https://github.com/rludlow/3d-pose-2d-keypoints)
+My capstone project is available here: [3D Human Pose Estimation from 2d Keypoints](https://github.com/rludlow/3d-pose-2d-keypoints)
