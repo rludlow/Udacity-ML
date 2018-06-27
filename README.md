@@ -1,5 +1,6 @@
 # Udacity Machine Learning Nanodegree Projects
 
+0. Introductory Exercise - [Titanic Survival](https://github.com/rludlow/Udacity-ML/tree/master/Boston-Housing)
 1. Foundations and Regression - [Boston Housing](https://github.com/rludlow/Udacity-ML/tree/master/Boston-Housing)
 2. Supervised Learning - [Finding Donors for Charity](https://github.com/rludlow/Udacity-ML/tree/master/Finding-Donors)
 3. Unsupervised Learning - [Cluster Customer Segments](https://github.com/rludlow/Udacity-ML/tree/master/Finding-Donors)
